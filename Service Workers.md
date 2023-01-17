@@ -50,3 +50,15 @@ This is the stage where you intercept, GET requests to the server, and check to 
 Now if there is no cache found for the request, fetch again the request by yourself from the network and `ev.respondWith(networkResponse)` the response.
 
 Basically, since the SW has to `ev.respondWith(something)`, you can pack the whole of your logic inside the argument.
+
+```js
+self.addEventListener('fetch', (ev) => {
+    ev.respondWith(
+        // cached data or nework data
+        // you can also do other things here prior to responding to the client.
+    )
+})
+```
+
+## `ev.waitUntil()`
+The `ev` is an **Extendable Event**. This type of event extents the lifetime of an event until some work is done, before it automatically calls the next step. For example, before `install` calls `activate`.
